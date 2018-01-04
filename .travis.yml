@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- '4'
+- '6'
+- '8'
+- '9'
+script:
+- make test
+after_success:
+- >
+  if node --version | grep v8\. ; then
+    make coveralls;
+  else
+    echo "skipping coveralls report";
+  fi
